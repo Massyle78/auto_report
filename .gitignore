@@ -1,3 +1,1 @@
-﻿# Byte-compiled / optimized / DLL files`n__pycache__/`n*.py[cod]`n*$py.class`n`n# Virtual environments`n.venv/`nvenv/`nENV/`nenv/`n`n# Distribution / packaging`nbuild/`ndist/`n*.egg-info/`n.eggs/`n`n# Jupyter`n.ipynb_checkpoints/`n`n# VSCode`n.vscode/`n`n# macOS`n.DS_Store`n`n# Windows`nThumbs.db`n`n# Office/Excel temporary files`n~$*.xlsx`n~$*.xls`n~$*.docx`n~$*.pptx`n`n# Data caches`n*.tmp`n*.log`n`n# Local config`n*.env`n.env.local`n.env.*.local`n
-
-# Project data (not tracked)\ndata/\n!data/.gitkeep\n
+﻿data/*
