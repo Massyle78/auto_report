@@ -1,13 +1,1 @@
-﻿# auto_report
-
-Simple repository to manage automated reporting assets.
-
-## Structure
-- data/: input spreadsheets
-
-## Getting started
-1. Clone the repo.
-2. Place your input files in data/.
-
-## License
-MIT
+﻿# auto_report`n`nSimple repository to manage automated reporting assets.`n`n## Structure`n- data/: input spreadsheets`n`n## Getting started`n1. Clone the repo.`n2. Place your input files in `data/`.`n`n## License`nMIT`n
