@@ -1,0 +1,48 @@
+Goal: Create a new Excel workbook from a pandas DataFrame where each sheet provides a value count summary for a specified categorical column.
+
+---
+
+1. Context & Input Data
+
+I have a pandas DataFrame already loaded and prepared (filtered). The data is clean and ready for summarization.
+
+2. Required Column List
+
+The following list contains the names of the categorical columns for which I need a separate summary sheet:
+
+[Situation,
+EmploiLieuRegionEtranger,
+EmploiContrat,
+EmploiFranceCadre,
+EmploiEntrepriseTaille,
+Calcul_Euros_EmploiSalaireBrutAnnuelAP,
+1erEmploiLapsPourTrouverApresDiplome,
+EmploiCommentTrouve,
+EmploiSecteur,
+EmploiService,]
+
+3. Output Specification
+
+- Output File: The final result must be a single Excel file named Enq_TCD_{datetime}.xlsx.
+- Writer: Use pandas.ExcelWriter with the xlsxwriter engine.
+- Sheets (Pages): The Excel file must contain one separate sheet for *each* column in the Required Column List.
+- Sheet Naming: Each sheet must be named after the column it summarizes (e.g., a sheet summarizing the 'sector' column should be named 'sector').
+- Sheet Content:
+    - For each column, calculate the value counts (the frequency of each unique value) value_counts() function already exist in pandas.
+    - The resulting summary table on each sheet must have two columns: The unique value and its count.
+    - The index of the resulting value counts Series MUST NOT be written to the Excel sheet.
+
+4. Step-by-Step Instructions
+
+1. Initialize a pandas.ExcelWriter instance targeting the file name Data_Summary.xlsx using the xlsxwriter engine.
+2. Iterate through the list of required column names.
+3. For each column:
+    a. Calculate the value counts of that column in the DataFrame (df). Convert the result to a DataFrame.
+    b. Use the to_excel() method to write the resulting summary to the ExcelWriter object.
+    c. Set the sheet_name argument in to_excel() to the current column name.
+    d. Set the index argument in to_excel() to False.
+4. Save/Close the ExcelWriter object to generate the final Excel file.
+
+5. Code Requirements
+
+Provide the full, executable Python code block. Include a small, simple placeholder DataFrame setup *before* the main logic to ensure the code is runnable and demonstrates the process.

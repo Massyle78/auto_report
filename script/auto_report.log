@@ -1,0 +1,110 @@
+2025-09-23 12:12:21,570 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-09-23 12:12:39,169 INFO __main__: Max year: 2023.0
+2025-09-23 12:13:14,388 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-09-23 12:13:21,440 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-09-23 12:13:39,627 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-09-23 12:13:56,542 INFO __main__: Max year: 2023.0
+2025-09-23 12:25:07,165 INFO __main__: Max year: 2024
+2025-09-23 12:26:10,312 INFO __main__: Total lines: 1449
+2025-09-23 12:31:58,572 INFO __main__: No missing values in IdentiteSexeVerifie
+2025-09-23 12:34:15,776 INFO __main__: No missing or invalid values in IdentiteSexeVerifie
+2025-09-23 12:34:15,782 INFO __main__: Remaining IdentiteSexeVerifie distribution:
+2025-09-23 12:34:15,792 INFO __main__: 
+IdentiteSexeVerifie
+Homme    902
+Femme    547
+2025-09-23 12:34:41,795 INFO __main__: Total lines: 1449
+2025-09-23 12:34:49,435 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-09-23 12:35:05,014 INFO __main__: Max year: 2024
+2025-09-23 12:35:05,125 INFO __main__: Total lines: 1449
+2025-10-05 14:33:28,665 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-05 14:33:44,900 INFO __main__: Max year: 2024
+2025-10-05 14:33:45,008 INFO __main__: Total lines: 1449
+2025-10-13 18:29:20,839 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-13 18:29:35,281 INFO __main__: Max year: 2024
+2025-10-13 18:29:35,392 INFO __main__: Total lines: 1449
+2025-10-14 09:32:21,699 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-14 09:32:25,711 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-14 09:32:42,887 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-14 09:33:07,617 INFO __main__: Max year: 2024
+2025-10-14 09:33:07,700 INFO __main__: Total lines: 1449
+2025-10-14 09:35:00,871 INFO __main__: Excel summary written: C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251014_093459.xlsx
+2025-10-14 09:44:48,789 INFO __main__: Excel summary written: C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251014_094448.xlsx
+2025-10-14 09:49:35,812 INFO __main__: Excel summary written: C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251014_094935.xlsx
+2025-10-14 09:58:27,908 INFO __main__: Excel summary written: C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251014_095827.xlsx
+2025-10-14 10:05:09,292 INFO __main__: Excel summary written: C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251014_100506.xlsx
+2025-10-20 10:44:16,421 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-20 10:44:23,347 INFO __main__: Max year: 2024
+2025-10-20 10:44:25,284 INFO __main__: Total lines: 1449
+2025-10-20 10:49:58,325 INFO __main__: Excel summary written: C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251020_104957.xlsx
+2025-10-21 10:38:08,109 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-21 10:38:14,809 INFO __main__: Max year: 2024
+2025-10-21 10:38:14,858 INFO __main__: Total lines: 1449
+2025-10-28 06:11:07,795 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-28 06:11:24,984 INFO __main__: Max year: 2024
+2025-10-28 06:11:25,084 INFO __main__: Total lines: 1449
+2025-10-28 06:48:28,099 INFO __main__: Loading data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028.pkl
+2025-10-28 06:48:28,146 INFO __main__: Saving aggregated data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated.pkl
+2025-10-28 06:48:28,163 INFO __main__: Aggregated data saved successfully!
+2025-10-28 06:50:01,496 INFO __main__: Loading aggregated data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated.pkl
+2025-10-28 06:50:01,577 INFO __main__: Converting to percentages...
+2025-10-28 06:50:02,519 INFO __main__: Saving percentage data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated_percent.xlsx
+2025-10-28 06:50:06,460 INFO __main__: Percentage Excel file saved successfully!
+2025-10-28 06:50:06,464 INFO __main__: Saving percentage data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated_percent.pkl
+2025-10-28 06:50:06,488 ERROR __main__: Error during percentage conversion: 'EmploiLieuRegionEtranger'
+2025-10-28 07:24:33,330 INFO __main__: Max year: 2024
+2025-10-28 07:24:33,428 INFO __main__: Total lines: 1449
+2025-10-28 07:25:57,573 INFO __main__: Loading data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028.pkl
+2025-10-28 07:25:57,660 INFO __main__: Saving aggregated data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated.pkl
+2025-10-28 07:25:57,684 INFO __main__: Aggregated data saved successfully!
+2025-10-28 07:26:11,823 INFO __main__: Loading aggregated data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated.pkl
+2025-10-28 07:26:11,884 INFO __main__: Converting to percentages...
+2025-10-28 07:26:13,270 INFO __main__: Saving percentage data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated_percent.xlsx
+2025-10-28 07:26:15,867 INFO __main__: Percentage Excel file saved successfully!
+2025-10-28 07:26:15,872 INFO __main__: Saving percentage data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated_percent.pkl
+2025-10-28 07:32:17,578 INFO __main__: Max year: 2024
+2025-10-28 07:32:17,681 INFO __main__: Total lines: 1449
+2025-10-28 07:32:24,407 INFO __main__: Max year: 2024
+2025-10-28 07:32:26,082 INFO __main__: Total lines: 1449
+2025-10-28 07:39:22,164 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-28 07:41:13,462 INFO __main__: Max year: 2024
+2025-10-28 07:41:13,494 INFO __main__: Total lines: 1449
+2025-10-28 07:41:34,286 INFO __main__: Max year: 2024
+2025-10-28 07:41:34,319 INFO __main__: Total lines: 1449
+2025-10-28 10:14:35,187 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-10-28 10:15:10,790 INFO __main__: Max year: 2024
+2025-10-28 10:15:10,983 INFO __main__: Total lines: 1449
+2025-11-03 09:15:39,093 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-11-03 09:15:47,407 INFO __main__: Max year: 2024
+2025-11-03 09:15:47,458 INFO __main__: Total lines: 1449
+2025-11-03 09:28:31,925 INFO __main__: Loading data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028.pkl
+2025-11-03 09:28:32,033 INFO __main__: Saving aggregated data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated.pkl
+2025-11-03 09:28:32,077 INFO __main__: Aggregated data saved successfully!
+2025-11-03 09:28:43,206 INFO __main__: Loading aggregated data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated.pkl
+2025-11-03 09:28:43,514 INFO __main__: Converting to percentages...
+2025-11-03 09:28:45,743 INFO __main__: Saving percentage data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated_percent.xlsx
+2025-11-03 09:28:58,084 INFO __main__: Percentage Excel file saved successfully!
+2025-11-03 09:28:58,085 INFO __main__: Saving percentage data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251028_aggregated_percent.pkl
+2025-11-03 09:33:01,386 INFO __main__: Loading data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103.pkl
+2025-11-03 09:33:01,390 ERROR __main__: Error during aggregation: [Errno 2] No such file or directory: 'C:\\Users\\Massyle\\Documents\\auto_report\\Enq_TCD_20251103.pkl'
+2025-11-03 09:33:40,243 INFO __main__: Loading data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103_Ecole_Branche_abr.pkl
+2025-11-03 09:33:40,262 INFO __main__: Saving aggregated data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103_aggregated.pkl
+2025-11-03 09:33:40,268 INFO __main__: Aggregated data saved successfully!
+2025-11-03 09:35:02,888 INFO __main__: Loading aggregated data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103_aggregated.pkl
+2025-11-03 09:35:02,920 INFO __main__: Converting to percentages...
+2025-11-03 09:35:03,490 INFO __main__: Saving percentage data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103_aggregated_percent.xlsx
+2025-11-03 09:35:05,668 INFO __main__: Percentage Excel file saved successfully!
+2025-11-03 09:35:05,670 INFO __main__: Saving percentage data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103_aggregated_percent.pkl
+2025-11-03 10:11:13,602 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-11-03 10:11:21,414 INFO __main__: Max year: 2024
+2025-11-03 10:11:21,499 INFO __main__: Total lines: 1449
+2025-11-03 10:11:23,688 INFO __main__: Max year: 2024
+2025-11-03 10:11:23,725 INFO __main__: Total lines: 1449
+2025-11-03 10:12:00,930 INFO __main__: Loading data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103.pkl
+2025-11-03 10:12:00,932 ERROR __main__: Error during aggregation: [Errno 2] No such file or directory: 'C:\\Users\\Massyle\\Documents\\auto_report\\Enq_TCD_20251103.pkl'
+2025-11-03 10:12:36,295 INFO __main__: Loading data from C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103_Ecole_Branche_abr.pkl
+2025-11-03 10:12:36,311 INFO __main__: Saving aggregated data to C:\Users\Massyle\Documents\auto_report\Enq_TCD_20251103_aggregated.pkl
+2025-11-03 10:12:36,317 INFO __main__: Aggregated data saved successfully!
+2025-11-03 10:35:43,876 INFO __main__: Logging configured: INFO level to stdout and auto_report.log
+2025-11-03 10:35:50,121 INFO __main__: Max year: 2024
+2025-11-03 10:35:50,163 INFO __main__: Total lines: 1449

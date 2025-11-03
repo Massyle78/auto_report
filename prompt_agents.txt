@@ -1,0 +1,78 @@
+J’ai un fichier Excel d’enquête (exemple : CGE-UTC_PGE2024 anonyme.xlsx).
+Je veux automatiser la production d’un rapport de statistiques descriptives (fréquences absolues et pourcentages) pour un ensemble de variables standardisées.
+
+Étapes attendues :
+
+Chargement des données
+
+Importer le fichier Excel avec pandas (read_excel).
+
+Nettoyage des noms de colonnes
+
+Supprimer le numéro et le point au début du nom des colonnes (par ex. "15. Situation" → "Situation").
+
+Dictionnaire de correspondance
+
+Appliquer un mapping entre les colonnes "nettoyées" du fichier et les noms attendus en sortie :
+
+ACTIVITE ACTUELLE         <- Situation
+LIEU DE TRAVAIL           <- EmploiLieuRegionEtranger
+CONTRAT                   <- EmploiContrat
+STATUT CADRE              <- EmploiFranceCadre
+TAILLE D'ENTREPRISE       <- EmploiEntrepriseTaille
+REMUNERATION (en moyenne) (hors VIE et Thèse) <- Calcul_Euros_EmploiSalaireBrutAnnuelAP
+DELAI DE RECHERCHE (1er emploi) <- 1erEmploiLapsPourTrouverApresDiplome
+ACCES AU 1er EMPLOI       <- EmploiCommentTrouve
+SECTEURS                  <- EmploiSecteur
+SERVICES                  <- EmploiService
+
+Renommage des colonnes
+
+Renommer les colonnes en utilisant ce dictionnaire pour obtenir les noms standardisés ci-dessus.
+
+Statistiques descriptives
+
+la colonne de genre est "IdentiteSexeVerifie"
+
+Normaliser les valeurs en Homme et Femme en mappant les variantes M, m, H, homme, Homme, male, MASC → Homme; F, f, femme, Femme, female → Femme.
+
+Si d’autres modalités existent (Autre, Non renseigné), les compter dans Total mais ne pas créer de colonne dédiée (sauf si demandé en option).
+
+La colonne année est "AnneeDiplomeVerifiee"
+
+Pour chaque colonne présente dans la liste des 10 noms standardisés :
+
+Calculer les effectifs (value_counts).
+
+Calculer les pourcentages (value_counts(normalize=True) * 100).
+
+Pour chaque variable standard, et pour chaque année disponible :
+
+Compter les répondants par modalité de la variable × sexe.
+
+Calculer le pourcentage des répondants de l’année et par sexe.
+
+Inclure une colonne Total (tous sexes confondus).
+
+produire une feuille Excel où la première colonne contient toutes les modalités (valeurs) de la variable, puis, pour chaque année choisie, trois colonnes contenant les effectifs : Homme, Femme, Total. Exemple d’ordre de colonnes pour deux années X et X+1 :
+Modality | Homme_X | Femme_X | Total_X | Homme_X+1 | Femme_X+1 | Total_X+1
+=========================================================================================
+Rapport Excel
+
+Générer un fichier Excel nommé statistiques_descriptives.xlsx.
+
+Chaque variable doit être enregistrée dans une feuille distincte (onglet nommé selon le nom standardisé).
+
+Contraintes :
+
+Le script doit être robuste :
+
+ignorer les colonnes manquantes,
+
+accepter que les noms d’entrée puissent varier d’une année à l’autre,
+
+garder les intitulés standardisés exactement comme listés ci-dessus pour les sorties.
+
+Livrable attendu :
+
+Un script Python basé sur pandas qui réalise automatiquement ce pipeline et produit le fichier Excel final.
