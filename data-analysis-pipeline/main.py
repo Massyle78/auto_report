@@ -24,8 +24,7 @@ from src.processing.post_processing import (
 )
 from src.io.data_writer import (
     save_to_pickle,
-    save_to_excel_multisheet,
-    save_to_excel_single_report,
+    save_to_excel_singlesheet,
 )
 
 
@@ -111,11 +110,7 @@ def main() -> None:
 
         # 1) Counts (TCD only numbers)
         out_counts_xlsx = base_for_kind.with_name(f"{base_for_kind.name}_counts").with_suffix(".xlsx")
-        if kind == "global" and args.single_sheet:
-            # single-sheet applies only to main consolidated; for step files we keep per-sheet like notebook
-            save_to_excel_multisheet(sheets_counts, out_counts_xlsx)
-        else:
-            save_to_excel_multisheet(sheets_counts, out_counts_xlsx)
+        save_to_excel_singlesheet(sheets_counts, out_counts_xlsx)
         if not args.no_pickle:
             save_to_pickle(sheets_counts, out_counts_xlsx.with_suffix(".pkl"))
 
@@ -124,7 +119,7 @@ def main() -> None:
             sheets_agg = aggregate_employment_regions(dict(sheets_counts))
             sheets_agg = aggregate_company_size(sheets_agg)
             out_agg_xlsx = base_for_kind.with_name(f"{base_for_kind.name}_aggregated").with_suffix(".xlsx")
-            save_to_excel_multisheet(sheets_agg, out_agg_xlsx)
+            save_to_excel_singlesheet(sheets_agg, out_agg_xlsx)
             if not args.no_pickle:
                 save_to_pickle(sheets_agg, out_agg_xlsx.with_suffix(".pkl"))
         else:
@@ -135,7 +130,7 @@ def main() -> None:
             source_for_percent = sheets_agg if sheets_agg is not None else sheets_counts
             sheets_pct = convert_all_to_percentages(source_for_percent)
             out_pct_xlsx = base_for_kind.with_name(f"{base_for_kind.name}_percent").with_suffix(".xlsx")
-            save_to_excel_multisheet(sheets_pct, out_pct_xlsx)
+            save_to_excel_singlesheet(sheets_pct, out_pct_xlsx)
             if not args.no_pickle:
                 save_to_pickle(sheets_pct, out_pct_xlsx.with_suffix(".pkl"))
 
@@ -148,10 +143,7 @@ def main() -> None:
                 main_sheets = sheets_agg or main_sheets
             if args.percent:
                 main_sheets = convert_all_to_percentages(main_sheets)
-            if kind == "global" and args.single_sheet:
-                save_to_excel_single_report(main_sheets, out_main_xlsx)
-            else:
-                save_to_excel_multisheet(main_sheets, out_main_xlsx)
+            save_to_excel_singlesheet(main_sheets, out_main_xlsx)
             if not args.no_pickle:
                 save_to_pickle(main_sheets, out_main_xlsx.with_suffix(".pkl"))
 

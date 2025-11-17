@@ -5,6 +5,7 @@ import pandas as pd
 
 from config.settings import YEAR_COL, GENDER_COL, BRANCH_COL
 from src.utils.sheet_utils import safe_sheet_name
+from src.analysis.remuneration import build_remuneration_sheets
 
 
 logger = logging.getLogger(__name__)
@@ -34,6 +35,10 @@ def run_branch_analysis(df: pd.DataFrame, summary_cols: List[str]) -> Dict[str, 
                 continue
             sheet_key = f"{branch}_{col}"
             sheets[safe_sheet_name(sheet_key)] = _pivot(df_branch, col)
+        # Add remuneration sheets for this branch
+        branch_rem = build_remuneration_sheets(df_branch)
+        for name, rem_df in branch_rem.items():
+            sheets[safe_sheet_name(f"{branch}_{name}")] = rem_df
     return sheets
 
 

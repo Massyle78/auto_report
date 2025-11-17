@@ -33,3 +33,13 @@ SUMMARY_COLUMNS: list[str] = [
 ]
 
 
+# Salary and region-related columns (used for remuneration summaries)
+SALARY_AP_COL: str = "Calcul_Euros_EmploiSalaireBrutAnnuelAP"
+SALARY_HP_COL: str = "Calcul_Euros_EmploiSalaireBrutAnnuelHP"
+REGION_FOREIGN_COL: str = "EmploiLieuRegionEtranger"
+
+# Output sheet names for remuneration summaries
+REMUNERATION_SHEET_NAME: str = "Remuneration"
+REMUNERATION_FR_SHEET_NAME: str = "Remuneration (France)"
+
+

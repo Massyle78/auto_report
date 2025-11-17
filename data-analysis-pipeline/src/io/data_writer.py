@@ -43,6 +43,45 @@ def save_to_excel_multisheet(sheets_dict: Dict[str, pd.DataFrame], output_path: 
             _autofit_openpyxl_sheet(writer, name, df)
 
 
+def save_to_excel_singlesheet(
+    sheets_dict: Dict[str, pd.DataFrame],
+    output_path: Path,
+    sheet_name: str = "Combined",
+) -> None:
+    """Write all DataFrames from sheets_dict into a single worksheet.
+
+    All DataFrames are concatenated vertically with an added top-level index that
+    keeps track of their original sheet names. Columns are aligned automatically
+    (missing values filled with zero) to ensure consistent structure.
+    """
+    logger.info("Saving Excel (single-sheet combined): %s", output_path)
+    if not sheets_dict:
+        logger.warning("No sheets to write for single-sheet export: %s", output_path)
+        return
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    sanitized_sheet = safe_sheet_name(sheet_name)
+    sanitized_keys = []
+    frames = []
+    for raw_name, df in sheets_dict.items():
+        sanitized_keys.append(safe_sheet_name(raw_name))
+        frames.append(df.copy())
+
+    combined = (
+        pd.concat(
+            frames,
+            keys=sanitized_keys,
+            names=["Sheet"],
+            sort=False,
+        )
+        .fillna(0)
+    )
+
+    with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
+        combined.to_excel(writer, sheet_name=sanitized_sheet)
+        _autofit_openpyxl_sheet(writer, sanitized_sheet, combined)
+
+
 def save_to_excel_single_report(
     sheets_dict: Dict[str, pd.DataFrame], output_path: Path, sheet_name: str = "Global"
 ) -> None:

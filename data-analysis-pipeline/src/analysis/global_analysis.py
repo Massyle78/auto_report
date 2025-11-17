@@ -4,6 +4,7 @@ from typing import Dict, List
 import pandas as pd
 
 from config.settings import YEAR_COL, GENDER_COL
+from src.analysis.remuneration import build_remuneration_sheets
 
 
 logger = logging.getLogger(__name__)
@@ -36,6 +37,9 @@ def run_global_analysis(df: pd.DataFrame, summary_cols: List[str]) -> Dict[str, 
         except Exception:
             logger.debug("Could not add per-year totals for %s", col, exc_info=True)
         sheets[col] = pivot
+
+    # Add remuneration sheets (behaves like another summary table family)
+    sheets.update(build_remuneration_sheets(df))
     return sheets
 
 
