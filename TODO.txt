@@ -1,0 +1,4 @@
+Tache suivante : 
+- taux emploi net
+- salaire (calcul)
+- totaux pour la branch analysis (liés avec la création des salaires)

@@ -1,3 +1,0 @@
-spécificité du projet : 
-
-Pour le lieu de travail, les lignes ile de france reste ile de france, l'étranger reste l'étranger mais le reste est regroupé en une seule statistiques province 

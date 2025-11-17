@@ -1,4 +1,5 @@
 import logging
+from collections import defaultdict
 from typing import Dict, List
 
 import pandas as pd
@@ -23,6 +24,8 @@ def _pivot(df: pd.DataFrame, index_col: str) -> pd.DataFrame:
 
 def run_filiere_analysis(df: pd.DataFrame, summary_cols: List[str]) -> Dict[str, pd.DataFrame]:
     sheets: Dict[str, pd.DataFrame] = {}
+    per_column_tables: Dict[str, Dict[str, pd.DataFrame]] = defaultdict(dict)
+    per_remuneration_tables: Dict[str, Dict[str, pd.DataFrame]] = defaultdict(dict)
     if BRANCH_COL not in df.columns:
         logger.warning("Branch column %s not found; skipping filiere analysis", BRANCH_COL)
         return sheets
@@ -33,12 +36,37 @@ def run_filiere_analysis(df: pd.DataFrame, summary_cols: List[str]) -> Dict[str,
             if col not in df_branch.columns:
                 logger.warning("Skipping missing column in filiere analysis: %s", col)
                 continue
-            sheet_key = f"{branch}_{col}"
-            sheets[safe_sheet_name(sheet_key)] = _pivot(df_branch, col)
+            per_column_tables[str(col)][branch] = _pivot(df_branch, col)
         # Add remuneration sheets for this branch-filiere view (aggregated by year/filiere)
         branch_rem = build_remuneration_sheets(df_branch)
         for name, rem_df in branch_rem.items():
-            sheets[safe_sheet_name(f"{branch}_{name}")] = rem_df
+            per_remuneration_tables[str(name)][branch] = rem_df
+
+    def _with_branch_level(table: pd.DataFrame, branch_name: str) -> pd.DataFrame:
+        table_copy = table.copy()
+        cols = table_copy.columns
+        if isinstance(cols, pd.MultiIndex):
+            new_names = ["Branch"] + list(cols.names if cols.names is not None else [None] * cols.nlevels)
+            tuples = [(branch_name,) + tuple(col_tuple) for col_tuple in cols]
+        else:
+            new_names = ["Branch", cols.name]
+            tuples = [(branch_name, col) for col in cols]
+        table_copy.columns = pd.MultiIndex.from_tuples(tuples, names=new_names)
+        return table_copy
+
+    def _combine_branch_tables(grouped_tables: Dict[str, Dict[str, pd.DataFrame]]) -> Dict[str, pd.DataFrame]:
+        combined_tables: Dict[str, pd.DataFrame] = {}
+        for table_name, branch_tables in grouped_tables.items():
+            branch_frames = []
+            for branch_name in sorted(branch_tables.keys()):
+                branch_frames.append(_with_branch_level(branch_tables[branch_name], branch_name))
+            combined = pd.concat(branch_frames, axis=1, sort=False).fillna(0)
+            combined_tables[safe_sheet_name(table_name)] = combined
+        return combined_tables
+
+    sheets.update(_combine_branch_tables(per_column_tables))
+    sheets.update(_combine_branch_tables(per_remuneration_tables))
+
     return sheets
 
 
