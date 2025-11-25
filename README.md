@@ -25,9 +25,7 @@ Le pipeline effectue des analyses statistiques complètes incluant :
 ```
 auto_report/
 ├── data/                                    # Données d'entrée (fichiers Excel)
-│   ├── CGE-UTC_PGE2024 anonyme.xlsx
-│   ├── CGE-UTC_PGE2025 anomyme.xlsx
-│   ├── Enq2025_Calculs TCD Branches.xlsx
+│   ├── input.xlsx
 │   └── ...
 ├── data-analysis-pipeline/                  # Pipeline principal d'analyse
 │   ├── config/
