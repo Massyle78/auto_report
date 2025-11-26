@@ -6,6 +6,9 @@ from typing import Dict
 import pandas as pd
 
 
+from config.settings import REMUNERATION_SHEET_NAME, REMUNERATION_FR_SHEET_NAME
+from src.utils.sheet_utils import safe_sheet_name
+
 logger = logging.getLogger(__name__)
 
 
@@ -61,7 +64,21 @@ def aggregate_company_size(sheets_dict: Dict[str, pd.DataFrame]) -> Dict[str, pd
 def convert_all_to_percentages(sheets_dict: Dict[str, pd.DataFrame]) -> Dict[str, pd.DataFrame]:
     """Convert counts to column-wise percentages for every DataFrame."""
     result: Dict[str, pd.DataFrame] = {}
+    
+    # Identify remuneration keys to skip (both raw and safe names just in case)
+    skip_keys = {
+        REMUNERATION_SHEET_NAME,
+        safe_sheet_name(REMUNERATION_SHEET_NAME),
+        REMUNERATION_FR_SHEET_NAME,
+        safe_sheet_name(REMUNERATION_FR_SHEET_NAME),
+    }
+
     for key, df in sheets_dict.items():
+        if key in skip_keys:
+            # Just copy the average salary table without modification
+            result[key] = df.copy()
+            continue
+
         sums = df.sum(axis=0)
         with pd.option_context("mode.use_inf_as_na", True):
             pct = (df.divide(sums, axis=1) * 100).fillna(0.0)

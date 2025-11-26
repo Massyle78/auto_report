@@ -39,7 +39,7 @@ def run_global_analysis(df: pd.DataFrame, summary_cols: List[str]) -> Dict[str, 
         sheets[col] = pivot
 
     # Add remuneration sheets (behaves like another summary table family)
-    sheets.update(build_remuneration_sheets(df))
+    sheets.update(build_remuneration_sheets(df, pivot_col=GENDER_COL))
     return sheets
 
 

@@ -38,7 +38,7 @@ def run_filiere_analysis(df: pd.DataFrame, summary_cols: List[str]) -> Dict[str,
                 continue
             per_column_tables[str(col)][branch] = _pivot(df_branch, col)
         # Add remuneration sheets for this branch-filiere view (aggregated by year/filiere)
-        branch_rem = build_remuneration_sheets(df_branch)
+        branch_rem = build_remuneration_sheets(df_branch, pivot_col=FILIER_COL)
         for name, rem_df in branch_rem.items():
             per_remuneration_tables[str(name)][branch] = rem_df
 
