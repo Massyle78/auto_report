@@ -1,4 +1,4 @@
 Tache suivante : 
 - taux emploi net
 - totaux pour la branch analysis (liés avec la création des salaires)
-- Streamlit interface 
+- division formation initiale / apprentissage
