@@ -55,7 +55,7 @@ do_aggregate = st.sidebar.checkbox(
 
 do_percent = st.sidebar.checkbox(
     "Convertir en pourcentages",
-    value=False,
+    value=True,
     help="Générer des fichiers avec des pourcentages."
 )
 
