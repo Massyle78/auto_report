@@ -26,7 +26,7 @@ from config.settings import SUMMARY_COLUMNS
 
 st.set_page_config(page_title="Pipeline d'Analyse de Données", layout="wide")
 
-st.title("Plateforme de Déploiement de Pipeline d'Analyse")
+st.title("Rapports d'analyse des données d'insertion professionnelle")
 
 st.markdown("""
 Cette application permet de :
