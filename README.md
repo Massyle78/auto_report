@@ -1,4 +1,4 @@
-﻿# Auto Report - Pipeline d'Analyse de Données d'Enquêtes
+﻿# Auto report - pipeline d'analyse de données d'enquêtes
 
 ## Description générale
 
