@@ -14,7 +14,9 @@ sys.path.append(str(Path(__file__).parent))
 
 from src.processing.data_loader import get_prepared_data
 from src.analysis.global_analysis import run_global_analysis
+from src.analysis.global_status_analysis import run_global_status_analysis
 from src.analysis.branch_analysis import run_branch_analysis
+from src.analysis.branch_status_analysis import run_branch_status_analysis
 from src.analysis.filiere_analysis import run_filiere_analysis
 from src.processing.post_processing import (
     aggregate_company_size,
@@ -42,8 +44,8 @@ uploaded_file = st.sidebar.file_uploader("Choisir un fichier Excel", type=["xlsx
 
 analysis_type = st.sidebar.selectbox(
     "Type d'analyse",
-    ["global", "branch", "filiere", "all"],
-    index=3,
+    ["global", "global_status", "branch", "branch_status", "filiere", "all"],
+    index=5,
     help="Choisissez le niveau d'analyse souhaité."
 )
 
@@ -64,8 +66,12 @@ do_percent = st.sidebar.checkbox(
 def run_analysis_logic(kind: str, df: pd.DataFrame) -> dict[str, pd.DataFrame]:
     if kind == "global":
         return run_global_analysis(df, SUMMARY_COLUMNS)
+    if kind == "global_status":
+        return run_global_status_analysis(df, SUMMARY_COLUMNS)
     if kind == "branch":
         return run_branch_analysis(df, SUMMARY_COLUMNS)
+    if kind == "branch_status":
+        return run_branch_status_analysis(df, SUMMARY_COLUMNS)
     if kind == "filiere":
         return run_filiere_analysis(df, SUMMARY_COLUMNS)
     raise ValueError(f"Unknown analysis kind: {kind}")
@@ -91,7 +97,7 @@ if uploaded_file is not None:
                     df = get_prepared_data(input_dir=temp_path, input_file_name=uploaded_file.name)
                     
                     outputs = {}
-                    kinds = [analysis_type] if analysis_type != "all" else ["global", "branch", "filiere"]
+                    kinds = [analysis_type] if analysis_type != "all" else ["global", "global_status", "branch", "branch_status", "filiere"]
                     
                     generated_files = []
 
