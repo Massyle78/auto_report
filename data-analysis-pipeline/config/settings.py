@@ -7,13 +7,15 @@ DATA_DIR: Path = PROJECT_ROOT / "data"
 REPORTS_DIR: Path = PROJECT_ROOT / "reports"
 
 # Input file name (place your Excel file in data/)
-INPUT_FILE_NAME: str = "input.xlsx"
+INPUT_FILE_NAME: str = "Enq2025_Calculs TCD Branches Initial.xlsx"
 
 # Domain column names
 YEAR_COL: str = "AnneeDiplomeVerifiee"
 GENDER_COL: str = "IdentiteSexeVerifie"
 BRANCH_COL: str = "Ecole_Branche_abr"
 FILIER_COL: str = "Ecole_Filiere_abr"
+STATUS_COL: str = "StatutFinScolarite"
+STATUS_INITIAL_VAL: str = "En formation initiale (hors alternance)"
 
 # Parameters
 YEAR_INTERVAL: int = 2  # inclusive interval: [max_year - YEAR_INTERVAL, max_year]

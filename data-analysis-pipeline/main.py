@@ -15,7 +15,9 @@ from config.settings import (
 from src.utils.logging_config import setup_logging
 from src.processing.data_loader import get_prepared_data
 from src.analysis.global_analysis import run_global_analysis
+from src.analysis.global_status_analysis import run_global_status_analysis
 from src.analysis.branch_analysis import run_branch_analysis
+from src.analysis.branch_status_analysis import run_branch_status_analysis
 from src.analysis.filiere_analysis import run_filiere_analysis
 from src.processing.post_processing import (
     aggregate_company_size,
@@ -33,7 +35,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--analysis",
         required=True,
-        choices=["global", "branch", "filiere", "all"],
+        choices=["global", "global_status", "branch", "branch_status", "filiere", "all"],
         help="Which analysis to run",
     )
     parser.add_argument(
@@ -81,8 +83,12 @@ def maybe_post_process(sheets: dict[str, pd.DataFrame], do_agg: bool, to_percent
 def run_analysis(kind: str, df: pd.DataFrame) -> dict[str, pd.DataFrame]:
     if kind == "global":
         return run_global_analysis(df, SUMMARY_COLUMNS)
+    if kind == "global_status":
+        return run_global_status_analysis(df, SUMMARY_COLUMNS)
     if kind == "branch":
         return run_branch_analysis(df, SUMMARY_COLUMNS)
+    if kind == "branch_status":
+        return run_branch_status_analysis(df, SUMMARY_COLUMNS)
     if kind == "filiere":
         return run_filiere_analysis(df, SUMMARY_COLUMNS)
     raise ValueError(f"Unknown analysis kind: {kind}")
@@ -95,7 +101,7 @@ def main() -> None:
     df = get_prepared_data(input_dir=DATA_DIR, input_file_name=args.input_file)
 
     outputs: dict[str, dict[str, pd.DataFrame]] = {}
-    kinds = [args.analysis] if args.analysis != "all" else ["global", "branch", "filiere"]
+    kinds = [args.analysis] if args.analysis != "all" else ["global", "global_status", "branch", "branch_status", "filiere"]
     for kind in kinds:
         
         logging.info("Running %s analysis", kind)
