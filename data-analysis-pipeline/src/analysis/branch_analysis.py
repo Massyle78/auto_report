@@ -36,7 +36,17 @@ def run_branch_analysis(df: pd.DataFrame, summary_cols: List[str]) -> Dict[str, 
             if col not in df_branch.columns:
                 logger.warning("Skipping missing column in branch analysis: %s", col)
                 continue
-            per_column_tables[str(col)][branch] = _pivot(df_branch, col)
+            pivot = _pivot(df_branch, col)
+            # Add per-year total across genders to match global analysis behavior
+            try:
+                years = pivot.columns.get_level_values(0).unique()
+                for y in years:
+                    pivot[(y, "Total")] = pivot.loc[:, y].sum(axis=1)
+                pivot = pivot.sort_index(axis=1, level=[0, 1])
+            except Exception:
+                logger.debug("Could not add per-year totals for branch %s, col %s", branch, col, exc_info=True)
+
+            per_column_tables[str(col)][branch] = pivot
         # Add remuneration sheets for this branch
         branch_rem = build_remuneration_sheets(df_branch, pivot_col=GENDER_COL)
         for name, rem_df in branch_rem.items():
